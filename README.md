@@ -114,14 +114,6 @@ Levels are JSON files in `Data/Levels/`:
 }
 ```
 
-## Team
-
-- Trọng Nhân
-- Tuấn Nguyên
-- An Nam
-- Quang Minh
-- Trung Nguyên
-
 ## Acknowledgements
 
 - [SFML](https://www.sfml-dev.org/) — graphics and windowing
