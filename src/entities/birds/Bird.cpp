@@ -1,0 +1,42 @@
+#include "Bird.h"
+
+Bird::Bird(sf::Vector2f pos, float r) : radius(r) {
+    body.position = pos;
+    body.setMass(1.0f);
+    body.setInertia(0.5f * body.mass * radius * radius);
+    body.restitution = 0.4f;
+    body.friction = 0.8f;
+    body.gravityScale = 600.0f / 980.0f;
+    body.setStatic(true); // Correctly zeros invMass and invInertia while on slingshot
+    sprite.setPosition(body.position); // Sync sprite immediately
+}
+
+void Bird::launch(sf::Vector2f velocity) {
+    if (!launched) {
+        launched = true;
+        body.setStatic(false); // Restores invMass = 1/mass, invInertia = 1/inertia
+        body.velocity = velocity;
+    }
+}
+
+void Bird::update(float dt) {
+    if (launched && !body.isStatic) {
+        // body.applyForce(sf::Vector2f(0.0f, 600.0f * body.mass)); // Handled by gravityScale
+        // body.integrate(dt);
+        
+        lifetime += dt;
+        if (lifetime > 5.0f) {
+            setActive(false);
+        }
+    }
+    
+    // Update sprite position to match physics body
+    sprite.setPosition(body.position);
+    sprite.setRotation(body.rotation * 180.0f / 3.14159265f);
+}
+
+void Bird::draw(sf::RenderWindow& window) {
+    if (is_active) {
+        window.draw(sprite);
+    }
+}
