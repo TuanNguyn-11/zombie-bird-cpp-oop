@@ -4,6 +4,12 @@ A 2D physics-based slingshot puzzle game written in **C++17** with **SFML 2.6**.
 
 > Object-Oriented Programming (OOP) course project — **HCMC University of Technology and Education (HCM-UTE)**.
 
+![Zombie Bird main menu](docs/screenshots/main-menu.png)
+
+| Aiming with trajectory preview | Knocking down the fortress |
+|:---:|:---:|
+| ![Aiming the slingshot](docs/screenshots/aiming.png) | ![Blocks collapsing after impact](docs/screenshots/impact.png) |
+
 ## Features
 
 - **Custom 2D physics engine** (no Box2D): gravity, mass & inertia, restitution, friction, rotation, and an impulse-based contact solver with warm starting.
